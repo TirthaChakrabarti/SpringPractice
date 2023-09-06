@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Setting up bean -->
+
+		<bean id="revisionTip" class= "serviceImplementation.RevisionTip">
+		</bean>
+
+		<bean id="hindiTeacher"
+			class="serviceImplementation.HindiTeacher">
+			
+			<!-- Setting up constructor injection -->
+			<constructor-arg ref = "revisionTip"></constructor-arg>
+		</bean>
+
+		<bean id="mathTeacher" class="serviceImplementation.MathTeacher">
+		
+			<!-- Setting up constructor injection -->
+			<constructor-arg ref = "revisionTip"></constructor-arg>
+		</bean>
+
+		<bean id="gkTeacher" class="serviceImplementation.GkTeacher">
+		
+			<!-- Setting up constructor injection -->
+			<constructor-arg ref = "revisionTip"></constructor-arg>
+		</bean>
+
+		<bean id="teacher" class="serviceImplementation.GkTeacher">
+		</bean>
+
+		<bean id="gKTeacher" class="serviceImplementation.GkTeacher"
+			scope="singleton">
+		</bean>
+
+		<bean id="GKTeacher" class="serviceImplementation.GkTeacher"
+			scope="prototype">
+		</bean>
+
+		<bean id="hindiTeacher2"
+			class="serviceImplementation.HindiTeacher" init-method="doInitialJob"
+			destroy-method="doFinalJob">
+		</bean>	
+		
+	<!-- XML+Java Annotation approach -->	
+	<!-- Add component scanning -->
+		
+		<context:component-scan base-package="serviceImplementation"></context:component-scan>	
+		
+</beans>
+
+
+
+
+
