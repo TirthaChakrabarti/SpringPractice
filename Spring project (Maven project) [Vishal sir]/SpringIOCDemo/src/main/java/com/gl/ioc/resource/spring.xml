@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+
+	<bean id='student' class="com.gl.ioc.model.Student"
+		scope="prototype">
+		<property name="age" value="30" />
+		<property name="name" value="Tirtha" />
+		<property name="email" value="ct2@gmail.com" />
+	</bean>
+
+	<bean id="st" class="com.gl.ioc.model.Student">
+		<constructor-arg value="24"></constructor-arg>
+		<constructor-arg value="Barnana"></constructor-arg>
+		<constructor-arg value="bc@gmail.com"></constructor-arg>
+	</bean>
+
+	<bean id='e' class="com.gl.ioc.model.Engine">
+		<property name="modelYear" value="1950" />
+	</bean>
+
+	<bean id='engine' class="com.gl.ioc.model.Engine">
+		<property name="modelYear" value="1970" />
+	</bean>
+
+	<bean id='c' class="com.gl.ioc.model.Car" autowire="byName"> <!-- or 'byType -->
+		<property name="modelName" value="Fiat" />
+		<!-- <property name="engine" ref="e" /> -->
+	</bean>
+
+</beans>
